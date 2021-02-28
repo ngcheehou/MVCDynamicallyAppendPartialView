@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 style="text-align:center">Register Employee</h1>
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div>
+            <div class="form-group">
+
+                Name :
+
+                <input class="form-control text-box single-line" data-val="true" id="EditorForName" type="text" autocomplete="off" style="width:70%">
+            </div>
+
+            <div class="form-group">
+
+                Designation :
+
+                <input class="form-control text-box single-line" data-val="true" id="EditorForNationality" type="text" autocomplete="off" style="width:20%">
+            </div>
+
+
+            <div class="form-group">
+
+                Gender :
+
+                <select class="form-control " id="DropDownForSubscriptionServicesNum" name="Numofusers" style="width:15%">
+                    <option value="M">Male</option>
+                    <option value="F">Female </option>
+                    <option value="U">Unknown</option>
+
+                </select>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<u> </u>
+
+<div class="form-content">
+    <div class="panel panel-default">
+        <div class="featured-box featured-box featured-box-dark featured-box-text-left jquery_accordion_content" style="    border-color: black;
+        border-top: 1px solid;
+        border-left: 1px solid;
+        border-right: 1px solid;
+        border-bottom: 1px solid;
+    ">
+
+
+            <div class="container ">
+
+
+                <div class="SkillSetHeaderClass">
+                    <partial name="_SkillSet.cshtml">
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="form-content">
+    <br/><button id="Btn_AddSkillSet" class="btn-success">Add Skill</button>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).on('click', '#Btn_AddSkillSet', function (e) {
+            $.ajax({
+                url: '/Employee/DisplayNewSkillSet',
+                success: function (partialView) {
+                    $('.SkillSetHeaderClass').append(partialView);
+                }
+            });
+        });
+
+
+        $(document).on("click", "#Btn_DeleteSkillset", function () {
+            $(this).parent().parent().remove();
+        });
+
+    </script>
+}
