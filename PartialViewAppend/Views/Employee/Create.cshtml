@@ -21,7 +21,7 @@
 
                 Designation :
 
-                <input class="form-control text-box single-line" data-val="true" id="EditorForNationality" type="text" autocomplete="off" style="width:20%">
+                <input class="form-control text-box single-line" data-val="true" id="EditorForDesignation" type="text" autocomplete="off" style="width:20%">
             </div>
 
 
@@ -29,7 +29,7 @@
 
                 Gender :
 
-                <select class="form-control " id="DropDownForSubscriptionServicesNum" name="Numofusers" style="width:15%">
+                <select class="form-control " id="DropDownForGender"  style="width:15%">
                     <option value="M">Male</option>
                     <option value="F">Female </option>
                     <option value="U">Unknown</option>
@@ -62,14 +62,27 @@
                 </div>
 
             </div>
+            <div class="form-content">
+                <br /><button id="Btn_AddSkillSet" class="btn-success">Add Skill</button>
+            </div>
+
         </div>
     </div>
 </div>
 
 
-<div class="form-content">
-    <br/><button id="Btn_AddSkillSet" class="btn-success">Add Skill</button>
-</div>
+
+ <br/>
+
+    <div class="col-sm-12 text-right">
+
+
+        <input type="button" id="Btn_Create" class="btn btn-primary" value="Create Employee" />
+
+
+    </div>
+ 
+
 
 @section Scripts {
 
@@ -88,6 +101,63 @@
         $(document).on("click", "#Btn_DeleteSkillset", function () {
             $(this).parent().parent().remove();
         });
+
+
+
+        $(document).on('click', '#Btn_Create', function (e) {
+
+
+
+            var emp = {
+               
+                EmpName: $("#EditorForName").val(),
+                Designation: $("#EditorForDesignation").val(),
+                Gender: $("#DropDownForSubscriptionPeriod").val()
+            };
+
+
+
+
+
+
+            skillSets = [];
+           
+ 
+            const EditorTechnology = document.querySelectorAll('#EditorTechnology');
+            const DropDownForExpertise = document.querySelectorAll('#DropDownForExpertise');
+            const EditorFoRemark = document.querySelectorAll('#EditorFoRemark');
+
+
+
+            for (var i = 0; i < EditorTechnology.length; i++) {
+               
+                skillSets.push({
+                    Technology: EditorTechnology[i].value,
+                    Expertise: DropDownForExpertise[i].value, 
+                    Remark: EditorFoRemark[i].value
+                });
+
+            }
+
+
+            $.ajax({
+                type: 'POST',
+                data: {   emp, skillSets  },
+                url: '/Employee/CreateEmployee',
+                success: function () {
+                   alert('Success!')
+                }
+            });
+        });
+
+
+
+
+
+
+        function RegisterEmployee() {
+        }
+ 
 
     </script>
 }

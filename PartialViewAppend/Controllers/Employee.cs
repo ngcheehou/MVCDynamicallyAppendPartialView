@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PartialViewAppend.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +86,11 @@ namespace PartialViewAppend.Controllers
         }
 
         public ActionResult DisplayNewSkillSet()
+        {
+            return PartialView("_SkillSet");
+        }
+
+        public ActionResult CreateEmployee(EmployeeModel emp, List<SkillSet> skillSets)
         {
             return PartialView("_SkillSet");
         }
