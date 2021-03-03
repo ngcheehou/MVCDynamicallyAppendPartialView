@@ -98,31 +98,30 @@
         });
 
 
+
         $(document).on("click", "#Btn_DeleteSkillset", function () {
             $(this).parent().parent().remove();
         });
 
 
 
-        $(document).on('click', '#Btn_Create', function (e) {
 
-
-
+        function geEmployee() {
             var emp = {
-               
+
                 EmpName: $("#EditorForName").val(),
                 Designation: $("#EditorForDesignation").val(),
-                Gender: $("#DropDownForSubscriptionPeriod").val()
+                Gender: $("#DropDownForGender").val()
             };
 
+            return emp;
+        }
 
 
-
-
-
+        function getSkillsets() {
             skillSets = [];
-           
- 
+
+
             const EditorTechnology = document.querySelectorAll('#EditorTechnology');
             const DropDownForExpertise = document.querySelectorAll('#DropDownForExpertise');
             const EditorFoRemark = document.querySelectorAll('#EditorFoRemark');
@@ -130,14 +129,26 @@
 
 
             for (var i = 0; i < EditorTechnology.length; i++) {
-               
-                skillSets.push({
-                    Technology: EditorTechnology[i].value,
-                    Expertise: DropDownForExpertise[i].value, 
-                    Remark: EditorFoRemark[i].value
-                });
-
+                if (EditorTechnology[i].value != '') {
+                    skillSets.push({
+                        Technology: EditorTechnology[i].value,
+                        Expertise: DropDownForExpertise[i].value,
+                        Remark: EditorFoRemark[i].value
+                    });
+                }
             }
+
+            return skillSets;
+        }
+
+
+
+        $(document).on('click', '#Btn_Create', function (e) {
+
+
+            var emp =   geEmployee();
+            var skillSets = getSkillsets();
+          
 
 
             $.ajax({

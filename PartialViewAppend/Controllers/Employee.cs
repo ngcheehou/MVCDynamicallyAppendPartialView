@@ -28,6 +28,8 @@ namespace PartialViewAppend.Controllers
             return View();
         }
 
+        
+
         // POST: Employee/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -92,9 +94,10 @@ namespace PartialViewAppend.Controllers
 
         public ActionResult CreateEmployee(EmployeeModel emp, List<SkillSet> skillSets)
         {
-            return PartialView("_SkillSet");
+            return View("Create");
         }
 
+       
 
     }
 }
