@@ -15,17 +15,6 @@ namespace PartialViewAppend.Models
 
         public string Gender { get; set; }
 
-        //public enum Gender
-        //{
-        //    Agender,
-        //    Bigender,
-        //    Cisgender,
-        //    GenderExpression,
-        //    GenderFluid,
-        //    Genderqueer,
-        //    Intersex,
-        //    ThirdGender,
-        //    Ze_Hir 
-        //}
+       
     }
 }

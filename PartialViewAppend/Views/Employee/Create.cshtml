@@ -145,12 +145,9 @@
 
         $(document).on('click', '#Btn_Create', function (e) {
 
-
             var emp =   geEmployee();
             var skillSets = getSkillsets();
           
-
-
             $.ajax({
                 type: 'POST',
                 data: {   emp, skillSets  },

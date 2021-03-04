@@ -94,6 +94,9 @@ namespace PartialViewAppend.Controllers
 
         public ActionResult CreateEmployee(EmployeeModel emp, List<SkillSet> skillSets)
         {
+            //some function to create a unique Emp Id before storing it to database
+
+            //store your data into the database here
             return View("Create");
         }
 
